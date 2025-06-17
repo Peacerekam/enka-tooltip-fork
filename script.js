@@ -479,7 +479,7 @@
 			var index = item.index ? parseInt(item.index) : 0;
 
 			const hasSpecialSprint = ["10000041", "10000002"].includes(item.id);
-			const adjustedIndex = hasSpecialSprint && index == 3 ? 4 : index;
+			const adjustedIndex = hasSpecialSprint && index === 3 ? 4 : index;
 
 			const lang = item.lang;
 			const talent = data.data.talent[adjustedIndex];
