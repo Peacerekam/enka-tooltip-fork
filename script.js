@@ -478,7 +478,8 @@
 			const level = item.level ? clamp(parseInt(item.level), 1, 15) : 8;
 			const index = item.index ? parseInt(item.index) : 0;
 
-			const talent = [1,2,3].includes(index) 
+			const isLevelable = [0, 1, 3].includes(index);
+			const talent = isLevelable
 				? Object.values(data.data.talent).filter(t => !!t.promote?.[15])[index - 1] 
 				: data.data.talent[index];
 
@@ -500,7 +501,7 @@
 			const tags = [];
 			const talentType = locData[lang][talentTypeHash[index]];
 			if (talentType) tags.push(talentType);
-			const talentlevel = [0, 1, 3].includes(index)
+			const talentlevel = isLevelable
 				? `${locData[lang]["level"]} ${level}`
 				: undefined;
 			// console.log(talentlevel);
