@@ -476,13 +476,13 @@
 
 		static talent(data, item) {
 			const level = item.level ? clamp(parseInt(item.level), 1, 15) : 8;
-			var index = item.index ? parseInt(item.index) : 0;
+			const index = item.index ? parseInt(item.index) : 0;
 
-			const hasSpecialSprint = ["10000041", "10000002"].includes(item.id);
-			const adjustedIndex = hasSpecialSprint && index === 3 ? 4 : index;
+			const talent = [1,2,3].includes(index) 
+				? Object.values(data.data.talent).filter(t => !!t.promote?.[15])[index - 1] 
+				: data.data.talent[index];
 
 			const lang = item.lang;
-			const talent = data.data.talent[adjustedIndex];
 			const charName = data.data.name;
 			const element = data.data.element;
 			let multiplyers = [];
